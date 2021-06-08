@@ -11,6 +11,13 @@ class UsersController < ApplicationController
     }
 
     auth_response = RestClient.post('https://accounts.spotify.com/api/token', body)
+    auth_params = JSON.parse(auth_response.body)
+
+    header = {
+      Authorization: "Bearer #{auth_params["access_token"]}"
+    }
+
+    user_response = RestClient.get("https://api.spotify.com/v1/me", header)
     binding.irb
   end
 
