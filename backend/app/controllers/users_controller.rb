@@ -18,10 +18,10 @@ class UsersController < ApplicationController
 
     user_response = RestClient.get("https://api.spotify.com/v1/me", header)
     user_params = JSON.parse(user_response.body)
-    binding.irb
     
     @user = User.new(spotify_id: user_params["id"], avatar: user_params["images"][0]["url"], access_token: auth_params["access_token"], refresh_token: auth_params["refresh_token"])
     render json: @user
+    # redirect_to "http://localhost:3000/"
   end
 
 end
