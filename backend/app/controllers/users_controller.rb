@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :authorized, only: [:create]
 
   def create
     body = {
@@ -20,7 +21,12 @@ class UsersController < ApplicationController
     user_params = JSON.parse(user_response.body)
     
     @user = User.new(spotify_id: user_params["id"], avatar: user_params["images"][0]["url"], access_token: auth_params["access_token"], refresh_token: auth_params["refresh_token"])
-    render json: @user
+    if @user.save
+      @token = encode_token(user_id: @user_id)
+      render json: { user: @user, jwt: @token }, status: :created
+    else
+      render json: { error: "failed to create user" }
+    end
     # redirect_to "http://localhost:3000/"
   end
 
