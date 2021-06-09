@@ -39,7 +39,6 @@ export default function useAuth(code) {
       })
       .then(res => res.json())
       .then(data => {
-        console.log('i feel freshed', data)
         setAccessToken(data.access_token)
         setExpiresIn(data.expires_in)
       })
