@@ -14,10 +14,18 @@ export default function useAuth(code) {
       body: JSON.stringify(code)
     })
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => {
+      console.log(data)
+      setAccessToken(data.access_token)
+      setRefreshToken(data.refresh_token)
+      setExpiresIn(data.expires_in)
+      window.history.pushState({}, null, '/')
+    })
     .catch(err => {
       console.error(err);
       window.location = "/"
     })
   }, [code])
+
+  return accessToken
 }
