@@ -10,6 +10,7 @@ export default function Dashboard({code}) {
   const [name, setName] = useState();
   const [avatar, setAvatar] = useState();
   const [playlists, setPlaylists] = useState();
+  const [filter, setFilter] = useState('');
 
   useEffect(() => {
     if (!accessToken) return
@@ -32,7 +33,10 @@ export default function Dashboard({code}) {
     <div>
       <img src={avatar} alt={name} />
       <h1>Welcome, {name}</h1>
-        {playlists && playlists.map(playlist => <Playlist key={playlist.id} accessToken={accessToken} playlist={playlist} />)}
+      <form>
+        <input onChange={(e) => setFilter(e.target.value)} value={filter} placeholder="Search for Playlist" />
+      </form>
+        {playlists && playlists.filter(playlist => playlist.name.toLowerCase().includes(filter.toLowerCase())).map(playlist => <Playlist key={playlist.id} accessToken={accessToken} playlist={playlist} />)}
     </div>
   )
 }
