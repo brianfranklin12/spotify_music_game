@@ -4,7 +4,7 @@ export default function Playlist({accessToken, playlist}) {
 
   return (
     <div>
-      <button onClick={() => FetchPlaylistTracks(accessToken, playlist.id)}>{playlist.name}</button>
+      <img src={playlist.images[0].url} alt={playlist.name} onClick={() => FetchPlaylistTracks(accessToken, playlist.id)} />
     </div>
   )
 }
