@@ -11,14 +11,11 @@ function Game({accessToken}) {
     FetchPlaylistTracks(accessToken, id)
     .then(data => setTracks(data.items))
   }, [accessToken, id])
-
+  
   return (
     <div>
-    <h1>Game</h1>
-    {tracks && 
-    <ul>
-      {tracks.map(track => <li>{track.track.name}</li>)}
-    </ul>}
+      <h1>Game</h1>
+      {tracks.map (track => <h4 key={track.track.id}>{track.track.name} by {track.track.artists[0].name}</h4>)}
     </div>
   )
 }
