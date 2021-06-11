@@ -15,12 +15,11 @@ export default function Dashboard({accessToken}) {
     FetchUserInfo(accessToken)
     .then(res => res.json())
     .then(data => {
-      console.log(data)
       setName(data.display_name)
       if (data.images[0]) {
         setAvatar(data.images[0].url)
       }
-    })
+    }, [accessToken])
 
     FetchPlaylists(accessToken)
     .then(res => res.json())
