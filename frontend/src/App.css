@@ -1,1 +1,15 @@
+.playlist_grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  justify-items: center;
+}
 
+.playlist_item {
+  text-align: center;
+  cursor: pointer;
+}
+
+.playlist_item img {
+  width: 300px;
+}

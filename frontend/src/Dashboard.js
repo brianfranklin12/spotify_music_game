@@ -36,7 +36,9 @@ export default function Dashboard({code}) {
       <form>
         <input onChange={(e) => setFilter(e.target.value)} value={filter} placeholder="Search for Playlist" />
       </form>
-        {playlists && playlists.filter(playlist => playlist.name.toLowerCase().includes(filter.toLowerCase())).map(playlist => <Playlist key={playlist.id} accessToken={accessToken} playlist={playlist} />)}
+        <div className="playlist_grid">
+          {playlists && playlists.filter(playlist => playlist.name.toLowerCase().includes(filter.toLowerCase())).map(playlist => <Playlist key={playlist.id} accessToken={accessToken} playlist={playlist} />)}
+        </div>
     </div>
   )
 }
