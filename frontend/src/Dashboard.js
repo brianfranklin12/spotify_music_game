@@ -30,6 +30,7 @@ export default function Dashboard({accessToken}) {
     <div>
       <img src={avatar} alt={name} />
       <h1>Welcome, {name}</h1>
+      <p>Click on one of your playlists below to start a game!</p>
       <form>
         <input className="search_bar" onChange={(e) => setFilter(e.target.value)} value={filter} placeholder="Search for Playlist" />
       </form>
