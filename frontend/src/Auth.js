@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 
-export default function useAuth(code) {
+export default function Auth(code) {
   const [accessToken, setAccessToken] = useState();
   const [refreshToken, setRefreshToken] = useState();
   const [expiresIn, setExpiresIn] = useState();
 
   useEffect(() => {
+    if (!code) return
     fetch('http://localhost:3001/login', {
       method: "POST",
       headers: {
@@ -19,6 +20,7 @@ export default function useAuth(code) {
       setRefreshToken(data.refresh_token)
       setExpiresIn(data.expires_in)
       window.history.pushState({}, null, '/')
+      localStorage.setItem('accessToken', data.access_token)
     })
     .catch(err => {
       console.error(err);
@@ -40,6 +42,7 @@ export default function useAuth(code) {
       .then(data => {
         setAccessToken(data.access_token)
         setExpiresIn(data.expires_in)
+        localStorage.setItem('accessToken', data.access_token)
       })
       .catch(err => {
         console.error(err)
