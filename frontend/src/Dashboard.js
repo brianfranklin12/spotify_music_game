@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
-import useAuth from './useAuth';
 import FetchUserInfo from './FetchUserInfo';
 import FetchPlaylists from './FetchPlaylists';
 import Playlist from './Playlist';
 
-export default function Dashboard({code}) {
-  const accessToken = useAuth(code)
+export default function Dashboard({accessToken}) {
 
   const [name, setName] = useState();
   const [avatar, setAvatar] = useState();
