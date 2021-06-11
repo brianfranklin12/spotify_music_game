@@ -1,3 +1,30 @@
+.login-page {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+.login-page a {
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: .25rem;
+  background-color: #1DB954;
+  padding: 1em 3em;
+  border-radius: .5em;
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.4);
+}
+
+.login-page a:hover {
+  background-color: rgba(29,185,84, .8);
+}
+
+.search_bar {
+  padding: 0.25em .5em;
+  margin: 0 auto;
+  font-size: 1.15rem;
+}
+
 .playlist_grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -6,10 +33,21 @@
 }
 
 .playlist_item {
+  background-color: rgba(83, 83, 83);
   text-align: center;
   cursor: pointer;
+  border-radius: 4px;
+  padding: 1rem;
+  margin: 2rem 1rem;
+  text-transform: uppercase;
+  font-weight: normal;
+  letter-spacing: .2rem;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
 }
 
+.playlist_item:hover {
+  background-color: rgba(83, 83, 83, .9 );
+}
 .playlist_item img {
-  width: 300px;
+  width: 100%;
 }

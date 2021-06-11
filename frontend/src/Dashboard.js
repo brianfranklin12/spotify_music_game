@@ -34,7 +34,7 @@ export default function Dashboard({code}) {
       <img src={avatar} alt={name} />
       <h1>Welcome, {name}</h1>
       <form>
-        <input onChange={(e) => setFilter(e.target.value)} value={filter} placeholder="Search for Playlist" />
+        <input className="search_bar" onChange={(e) => setFilter(e.target.value)} value={filter} placeholder="Search for Playlist" />
       </form>
         <div className="playlist_grid">
           {playlists && playlists.filter(playlist => playlist.name.toLowerCase().includes(filter.toLowerCase())).map(playlist => <Playlist key={playlist.id} accessToken={accessToken} playlist={playlist} />)}
