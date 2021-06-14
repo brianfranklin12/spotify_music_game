@@ -7,6 +7,7 @@ import Player from './Player'
 function Game({accessToken}) {
   const [tracks, setTracks] = useState([]);
   const { id } = useParams();
+  const [currentTrack, setCurrentTrack] = useState('');
 
   useEffect(() => {
     FetchPlaylistTracks(accessToken, id)
@@ -16,8 +17,8 @@ function Game({accessToken}) {
   return (
     <div>
       <h1>Game</h1>
-      <Player accessToken={accessToken} />
-      {tracks.map (track => <h4 key={track.track.id}>{track.track.name} by {track.track.artists[0].name}</h4>)}
+      <Player accessToken={accessToken} uri={currentTrack} />
+      {tracks.map (track => <h4 onClick={() => setCurrentTrack(track.track.uri)} key={track.track.id}>{track.track.name} by {track.track.artists[0].name}</h4>)}
     </div>
   )
 }
