@@ -7,7 +7,6 @@ function Player({accessToken, uri}) {
       <SpotifyPlayer
         token={accessToken}
         uris={uri}
-        callback={(state) => console.log(state)}
         autoPlay={true}
         play={true}
         styles={{
