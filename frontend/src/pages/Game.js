@@ -11,7 +11,10 @@ function Game({accessToken}) {
 
   useEffect(() => {
     FetchPlaylistTracks(accessToken, id)
-    .then(data => setTracks(data.items))
+    .then(data => {
+      setTracks(data.items)
+      setCurrentTrack(data.items[0].track.uri)
+    })
   }, [accessToken, id])
   
   return (

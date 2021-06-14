@@ -3,7 +3,7 @@ import SpotifyPlayer from 'react-spotify-web-playback';
 function Player({accessToken, uri}) {
 
   return (
-    <div>
+    <div className="hidden">
       <SpotifyPlayer
         token={accessToken}
         uris={uri}
