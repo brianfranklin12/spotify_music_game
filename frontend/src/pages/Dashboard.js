@@ -35,13 +35,18 @@ export default function Dashboard({accessToken}) {
 
   return (
     <div>
-      <img src={avatar} alt={name} />
-      <h1>Welcome, {name}</h1>
-      <button onClick={handleLogout}className="logout-btn">Log Out</button>
+      <div className="flex">
+        <div className="inline">
+          <h1>Welcome, {name}</h1>
+          <img className="avatar" src={avatar} alt={name} />
+        </div>
+        <form>
+          <input className="search_bar" onChange={(e) => setFilter(e.target.value)} value={filter} placeholder="Search for Playlist" />
+        </form>
+        <button onClick={handleLogout}className="logout-btn">Log Out</button>
+      </div>
       <p>Click on one of your playlists below to start a game!</p>
-      <form>
-        <input className="search_bar" onChange={(e) => setFilter(e.target.value)} value={filter} placeholder="Search for Playlist" />
-      </form>
+      
         <div className="playlist_grid">
           {playlists && playlists.filter(playlist => playlist.name.toLowerCase().includes(filter.toLowerCase())).map(playlist => <Playlist key={playlist.id} accessToken={accessToken} playlist={playlist} />)}
         </div>
