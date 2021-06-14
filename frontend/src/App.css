@@ -52,7 +52,7 @@
 }
 
 .playlist_item {
-  background-color: rgba(83, 83, 83);
+  background-color: #353535;
   text-align: center;
   cursor: pointer;
   border-radius: 4px;
@@ -65,7 +65,7 @@
 }
 
 .playlist_item:hover {
-  background-color: rgba(83, 83, 83, .9 );
+  background-color: #393939;
 }
 .playlist_item img {
   width: 100%;
