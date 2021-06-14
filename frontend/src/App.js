@@ -23,6 +23,9 @@ function App() {
           <Dashboard accessToken={accessToken}/>
         </Route>
         <Redirect exact from="/" to="/dashboard" />
+        <Route path="/login">
+          <Login />
+        </Route>
       </Switch>
     </Router>
     : <Login />

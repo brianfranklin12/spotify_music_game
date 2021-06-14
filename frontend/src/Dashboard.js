@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import FetchUserInfo from './FetchUserInfo';
 import FetchPlaylists from './FetchPlaylists';
 import Playlist from './Playlist';
+import { useHistory } from 'react-router-dom';
 
 export default function Dashboard({accessToken}) {
 
@@ -9,6 +10,7 @@ export default function Dashboard({accessToken}) {
   const [avatar, setAvatar] = useState();
   const [playlists, setPlaylists] = useState();
   const [filter, setFilter] = useState('');
+  const history = useHistory();
 
   useEffect(() => {
     if (!accessToken) return
@@ -26,10 +28,16 @@ export default function Dashboard({accessToken}) {
     .then(data => setPlaylists(data.items))
   }, [accessToken])
 
+  const handleLogout = () => {
+    localStorage.clear();
+    history.push('/login');
+  }
+
   return (
     <div>
       <img src={avatar} alt={name} />
       <h1>Welcome, {name}</h1>
+      <button onClick={handleLogout}className="logout-btn">Log Out</button>
       <p>Click on one of your playlists below to start a game!</p>
       <form>
         <input className="search_bar" onChange={(e) => setFilter(e.target.value)} value={filter} placeholder="Search for Playlist" />
