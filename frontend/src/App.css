@@ -43,6 +43,13 @@
   margin: 0 auto;
   font-size: 1.15rem;
   border-radius: 0.25rem;
+  background-color: #b3b3b3;
+  color: #121212;
+  text-align: center;
+}
+
+.search_bar:focus {
+  outline: white;
 }
 
 .playlist_grid {
