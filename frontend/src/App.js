@@ -1,7 +1,7 @@
 import './App.css';
-import Login from './Login'
-import Dashboard from './Dashboard'
-import Game from './Game'
+import Login from './pages/Login'
+import Dashboard from './pages/Dashboard'
+import Game from './pages/Game'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Auth from './services/Auth';
 

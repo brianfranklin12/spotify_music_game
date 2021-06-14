@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import FetchPlaylistTracks from './services/FetchPlaylistTracks'
+import FetchPlaylistTracks from '../services/FetchPlaylistTracks'
 import { useParams } from 'react-router-dom';
-import Player from './components/Player'
+import Player from '../components/Player'
 
 
 function Game({accessToken}) {

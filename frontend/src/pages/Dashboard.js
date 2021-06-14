@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import FetchUserInfo from './services/FetchUserInfo';
-import FetchPlaylists from './services/FetchPlaylists';
-import Playlist from './components/Playlist';
+import FetchUserInfo from '../services/FetchUserInfo';
+import FetchPlaylists from '../services/FetchPlaylists';
+import Playlist from '../components/Playlist';
 import { useHistory } from 'react-router-dom';
 
 export default function Dashboard({accessToken}) {
