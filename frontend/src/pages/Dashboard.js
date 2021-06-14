@@ -45,7 +45,7 @@ export default function Dashboard({accessToken}) {
         </form>
         <button onClick={handleLogout}className="logout-btn">Log Out</button>
       </div>
-      <p>Click on one of your playlists below to start a game!</p>
+      <p className="instructions">Click on a playlist below to start a game!</p>
       
         <div className="playlist_grid">
           {playlists && playlists.filter(playlist => playlist.name.toLowerCase().includes(filter.toLowerCase())).map(playlist => <Playlist key={playlist.id} accessToken={accessToken} playlist={playlist} />)}
