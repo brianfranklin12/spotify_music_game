@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import FetchPlaylistTracks from './FetchPlaylistTracks'
+import FetchPlaylistTracks from './services/FetchPlaylistTracks'
 import { useParams } from 'react-router-dom';
 import Player from './Player'
 

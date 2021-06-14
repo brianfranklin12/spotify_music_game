@@ -3,7 +3,7 @@ import Login from './Login'
 import Dashboard from './Dashboard'
 import Game from './Game'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import Auth from './Auth';
+import Auth from './services/Auth';
 
 const code = new URLSearchParams(window.location.search).get('code');
 

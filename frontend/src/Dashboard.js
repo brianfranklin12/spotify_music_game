@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import FetchUserInfo from './FetchUserInfo';
-import FetchPlaylists from './FetchPlaylists';
+import FetchUserInfo from './services/FetchUserInfo';
+import FetchPlaylists from './services/FetchPlaylists';
 import Playlist from './Playlist';
 import { useHistory } from 'react-router-dom';
 
