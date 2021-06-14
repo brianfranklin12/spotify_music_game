@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import FetchPlaylistTracks from './FetchPlaylistTracks'
 import { useParams } from 'react-router-dom';
+import Player from './Player'
 
 
 function Game({accessToken}) {
@@ -15,6 +16,7 @@ function Game({accessToken}) {
   return (
     <div>
       <h1>Game</h1>
+      <Player accessToken={accessToken} />
       {tracks.map (track => <h4 key={track.track.id}>{track.track.name} by {track.track.artists[0].name}</h4>)}
     </div>
   )
