@@ -150,6 +150,7 @@
 
   .inline {
     display: block;
+    text-align: center;
   }
 
   .inline img {
