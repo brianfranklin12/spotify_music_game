@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_15_115048) do
+ActiveRecord::Schema.define(version: 2021_06_15_175418) do
+
+  create_table "games", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "playlist_uri"
+    t.string "points"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_games_on_user_id"
+  end
+
+  create_table "tracks", force: :cascade do |t|
+    t.integer "game_id", null: false
+    t.string "name"
+    t.string "artist"
+    t.string "uri"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["game_id"], name: "index_tracks_on_game_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.integer "spotify_id"
@@ -21,4 +40,6 @@ ActiveRecord::Schema.define(version: 2021_06_15_115048) do
     t.string "name"
   end
 
+  add_foreign_key "games", "users"
+  add_foreign_key "tracks", "games"
 end
