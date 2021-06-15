@@ -24,9 +24,10 @@ export default function Dashboard({accessToken}) {
       return res.json()
     })
     .then(data => {
-      setName(data.name)
-      if (data.avatar) {
-        setAvatar(data.avatar)
+      localStorage.setItem('jwt', data.jwt)
+      setName(data.user.name)
+      if (data.user.avatar) {
+        setAvatar(data.user.avatar)
       }
     }, [accessToken])
 
