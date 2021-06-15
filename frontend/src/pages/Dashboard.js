@@ -24,9 +24,9 @@ export default function Dashboard({accessToken}) {
       return res.json()
     })
     .then(data => {
-      setName(data.display_name)
-      if (data.images[0]) {
-        setAvatar(data.images[0].url)
+      setName(data.name)
+      if (data.avatar) {
+        setAvatar(data.avatar)
       }
     }, [accessToken])
 
