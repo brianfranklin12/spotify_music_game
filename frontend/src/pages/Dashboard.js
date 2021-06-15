@@ -15,7 +15,14 @@ export default function Dashboard({accessToken}) {
   useEffect(() => {
     if (!accessToken) return
     FetchUserInfo(accessToken)
-    .then(res => res.json())
+    .then(res => {
+      if (!res.ok) {
+        localStorage.clear()
+        window.location = '/login'
+        return
+      }
+      return res.json()
+    })
     .then(data => {
       setName(data.display_name)
       if (data.images[0]) {
