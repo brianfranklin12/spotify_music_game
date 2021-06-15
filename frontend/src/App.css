@@ -157,3 +157,11 @@
     margin-bottom: 1rem;
   }
 }
+
+.game-container h4 {
+  cursor: pointer;
+}
+
+.active {
+  color: #1db954;
+}

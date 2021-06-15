@@ -18,6 +18,7 @@ function Game({accessToken}) {
       setCurrentTrack(data.items[0].track.uri)
     })
   }, [accessToken, id])
+
   
   return (
     <div>
@@ -25,7 +26,18 @@ function Game({accessToken}) {
       <div className="game-container">
         <h1>Game</h1>
         <Player accessToken={accessToken} uri={currentTrack} />
-        {tracks.map (track => <h4 onClick={() => setCurrentTrack(track.track.uri)} key={track.track.id}>{track.track.name} by {track.track.artists[0].name}</h4>)}
+        {tracks.map (track => {
+          const isActive = track.track.uri === currentTrack ? 'active' : null;
+          return (
+          <h4 
+            onClick={() => setCurrentTrack(track.track.uri)} 
+            key={track.track.id}
+            className={isActive}
+          >
+            {track.track.name} by {track.track.artists[0].name}
+          </h4>
+          )
+        })}
       </div>
     </div>
   )
