@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   post '/refresh', to: 'tokens#refresh'
   post '/users', to: 'users#create'
   get '/profile', to: 'users#profile'
+  post '/games', to: 'games#create'
 end
