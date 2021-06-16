@@ -20,17 +20,13 @@ function Game({accessToken}) {
     dispatch(NewGame({id, accessToken}))
   }, [id])
 
-  useEffect(() => {
-    setCurrentTrack(tracks[0].uri)
-  }, [tracks])
-  
   return (
     <div>
       <Link className="back-link" to={"/dashboard"}> <LeftIcon className="icon" fill="#212121" /> </Link>
       <div className="game-container">
         <h1>Game</h1>
         <Player accessToken={accessToken} uri={currentTrack} />
-        {tracks && tracks.map (track => {
+        {/* {tracks && tracks.map (track => {
           const isActive = track.uri === currentTrack ? 'active' : null;
           return (
           <h4 
@@ -41,7 +37,7 @@ function Game({accessToken}) {
             {track.name} by {track.artist}
           </h4>
           )
-        })}
+        })} */}
       </div>
     </div>
   )
