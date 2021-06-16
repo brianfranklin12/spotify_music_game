@@ -6,11 +6,12 @@ export const gameSlice = createSlice({
   initialState: {
     uri: null,
     tracks: [],
-    points: 0
+    points: null
   },
   extraReducers: {
     [NewGame.fulfilled] : (state, action) => {
-      console.log('made it back from rails with:', action.payload)
+      state.uri = action.payload.playlist_uri
+      state.points = action.payload.points
     }
   }
 })
