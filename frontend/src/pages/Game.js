@@ -5,14 +5,15 @@ import Player from '../components/Player'
 import {ReactComponent as LeftIcon} from '../icons/chevron-left.svg';
 import { Link } from 'react-router-dom';
 import { NewGame } from '../services/NewGame';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 function Game({accessToken}) {
-  const [tracks, setTracks] = useState([]);
+  // const [tracks, setTracks] = useState([]);
   const { id } = useParams();
   const [currentTrack, setCurrentTrack] = useState('');
   const dispatch = useDispatch();
+  const { tracks } = useSelector(state => state.game)
 
   // useEffect(() => {
   //   FetchPlaylistTracks(accessToken, id)
@@ -34,14 +35,14 @@ function Game({accessToken}) {
         <h1>Game</h1>
         <Player accessToken={accessToken} uri={currentTrack} />
         {tracks && tracks.map (track => {
-          const isActive = track.track.uri === currentTrack ? 'active' : null;
+          const isActive = track.uri === currentTrack ? 'active' : null;
           return (
           <h4 
-            onClick={() => setCurrentTrack(track.track.uri)} 
-            key={track.track.id}
+            onClick={() => setCurrentTrack(track.uri)} 
+            key={track.id}
             className={isActive}
           >
-            {track.track.name} by {track.track.artists[0].name}
+            {track.name} by {track.artist}
           </h4>
           )
         })}
