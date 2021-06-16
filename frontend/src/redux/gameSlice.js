@@ -10,8 +10,9 @@ export const gameSlice = createSlice({
   },
   extraReducers: {
     [NewGame.fulfilled] : (state, action) => {
-      state.uri = action.payload.playlist_uri
-      state.points = action.payload.points
+      state.tracks = action.payload.tracks
+      state.uri = action.payload.game.playlist_uri
+      state.points = action.payload.game.points
     }
   }
 })
