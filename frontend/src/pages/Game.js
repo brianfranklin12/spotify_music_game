@@ -15,18 +15,14 @@ function Game({accessToken}) {
   const dispatch = useDispatch();
   const { tracks } = useSelector(state => state.game)
 
-  // useEffect(() => {
-  //   FetchPlaylistTracks(accessToken, id)
-  //   .then(data => {
-  //     setTracks(data.items)
-  //     setCurrentTrack(data.items[0].track.uri)
-  //   })
-  // }, [accessToken, id])
 
   useEffect(() => {
     dispatch(NewGame({id, accessToken}))
   }, [id])
 
+  useEffect(() => {
+    setCurrentTrack(tracks[0].uri)
+  }, [tracks])
   
   return (
     <div>
