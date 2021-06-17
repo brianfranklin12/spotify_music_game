@@ -12,11 +12,11 @@ class Question < ApplicationRecord
   end
 
   def unique_wrong_answers
-    wrong_only.uniq!
+    wrong_only.uniq
   end
 
   def three_wrong_answers
-   wrong_only.sample(3)
+    unique_wrong_answers.sample(3)
   end
 
 end
