@@ -9,9 +9,8 @@ import Question from '../components/Question';
 
 
 function Game({accessToken}) {
-  // const [tracks, setTracks] = useState([]);
   const { id } = useParams();
-  const [currentTrack, setCurrentTrack] = useState('');
+  const [currentQuestion, setCurrentQuestion] = useState('');
   const dispatch = useDispatch();
   const { questions } = useSelector(state => state.game)
 
@@ -27,7 +26,7 @@ function Game({accessToken}) {
       <Link className="back-link" to={"/dashboard"}> <LeftIcon className="icon" fill="#212121" /> </Link>
       <div className="game-container">
         <h1>Game</h1>
-        <Player accessToken={accessToken} uri={currentTrack} />
+        <Player accessToken={accessToken} uri={currentQuestion} />
         {questions && questions.map(question => <Question question={question} />)}
       </div>
     </div>
