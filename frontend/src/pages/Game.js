@@ -10,24 +10,33 @@ import Question from '../components/Question';
 
 function Game({accessToken}) {
   const { id } = useParams();
-  const [currentQuestion, setCurrentQuestion] = useState('');
+  const [currentQuestion, setCurrentQuestion] = useState();
+  const [num, setNum] = useState(0);
   const dispatch = useDispatch();
   const { questions } = useSelector(state => state.game)
 
 
-
-  console.log(questions)
   useEffect(() => {
     dispatch(NewGame({id, accessToken}))
   }, [id])
+
+  useEffect(() => {
+    setCurrentQuestion(questions[num])
+  }, [questions, num])
+
+  const nextQuestion = () => {
+   setNum(num + 1)
+  }
+
+  console.log(currentQuestion)
 
   return (
     <div>
       <Link className="back-link" to={"/dashboard"}> <LeftIcon className="icon" fill="#212121" /> </Link>
       <div className="game-container">
-        <h1>Game</h1>
-        <Player accessToken={accessToken} uri={currentQuestion} />
-        {questions && questions.map(question => <Question question={question} />)}
+        <h1>Name the Artist</h1>
+        {currentQuestion && <Player accessToken={accessToken} uri={currentQuestion.track_uri} />}
+        {currentQuestion && <Question nextQuestion={nextQuestion} question={currentQuestion} />}
       </div>
     </div>
   )
