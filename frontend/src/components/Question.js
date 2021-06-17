@@ -1,7 +1,5 @@
 export default function Question({ question, nextQuestion }) {
 
-  console.log(question)
-
   const shuffle = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
       let j = Math.floor(Math.random() * (i + 1));
