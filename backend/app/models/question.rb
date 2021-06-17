@@ -11,8 +11,12 @@ class Question < ApplicationRecord
     wrong_only = artist_array.select { |artist| artist != self.correct_artist }
   end
 
+  def unique_wrong_answers
+    wrong_only.uniq!
+  end
+
   def three_wrong_answers
-    wrong_only.uniq!.sample(3)
+   wrong_only.sample(3)
   end
 
 end
