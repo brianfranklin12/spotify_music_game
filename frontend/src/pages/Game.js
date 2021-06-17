@@ -28,15 +28,13 @@ function Game({accessToken}) {
    setNum(num + 1)
   }
 
-  console.log(currentQuestion)
-
   return (
     <div>
       <Link className="back-link" to={"/dashboard"}> <LeftIcon className="icon" fill="#212121" /> </Link>
       <div className="game-container">
         <h1>Name the Artist</h1>
         {currentQuestion && <Player accessToken={accessToken} uri={currentQuestion.track_uri} />}
-        {currentQuestion && <Question nextQuestion={nextQuestion} question={currentQuestion} />}
+        {currentQuestion && <Question key={currentQuestion.id} nextQuestion={nextQuestion} question={currentQuestion} />}
       </div>
     </div>
   )
