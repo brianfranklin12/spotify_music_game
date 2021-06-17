@@ -25,7 +25,7 @@ export default function Question({ question, nextQuestion }) {
   return (
     <div className="question-card">
       {shuffledArray.map((answer, index) => (
-        <button className="answer" onClick={selectAnswer}>{answer}</button>
+        <button key={index} className="answer" onClick={selectAnswer}>{answer}</button>
       ))}
     </div>
   )
