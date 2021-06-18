@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_18_150635) do
+ActiveRecord::Schema.define(version: 2021_06_18_164757) do
 
   create_table "games", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2021_06_18_150635) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer "spotify_id"
+    t.string "spotify_id"
     t.string "avatar"
     t.integer "points"
     t.datetime "created_at", precision: 6, null: false
