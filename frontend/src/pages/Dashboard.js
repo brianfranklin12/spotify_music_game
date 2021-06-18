@@ -4,6 +4,7 @@ import Playlist from '../components/Playlist';
 import { useHistory } from 'react-router-dom';
 import { FetchUserInfo } from '../services/FetchUserInfo';
 import { useDispatch, useSelector } from 'react-redux';
+import Filter from '../components/Filter';
 
 export default function Dashboard({accessToken}) {
 
@@ -33,14 +34,12 @@ export default function Dashboard({accessToken}) {
           <h1>Welcome, {name}</h1>
           {avatar && <img className="avatar" src={avatar} alt={name} />}
         </div>
-        {/* <form>
-          <input className="search_bar" onChange={(e) => setFilter(e.target.value)} value={filter} placeholder="Search for Playlist" />
-        </form> */}
+       
         <button onClick={handleLogout}className="logout-btn">Log Out</button>
       </div>
       <div className="points-counter">Points: {points}</div>
       <p className="instructions">Click on a playlist below to start a game!</p>
-      
+      <Filter filter={filter} setFilter={setFilter} />
         <div className="playlist_grid">
           {playlists && playlists.filter(playlist => playlist.name.toLowerCase().includes(filter.toLowerCase())).map(playlist => <Playlist key={playlist.id} accessToken={accessToken} playlist={playlist} />)}
         </div>

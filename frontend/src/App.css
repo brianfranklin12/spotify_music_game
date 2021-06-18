@@ -53,14 +53,19 @@
   color: #1db954;
 }
 
-.search_bar {
-  padding: 0.25em .5em;
-  margin: 0 auto;
-  font-size: 1.15rem;
-  border-radius: 0.25rem;
-  background-color: #b3b3b3;
-  color: #121212;
+.dashboard {
   text-align: center;
+}
+.search_bar {
+  margin: 1em;
+  padding: 0.25em 0;
+  font-size: 1.3rem;
+  border: 0;
+  border-bottom: 2px solid white;
+  background-color: #212121;
+  color: white;
+  outline: 0;
+  /* box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.4); */
 }
 
 .search_bar:focus {
