@@ -18,7 +18,7 @@ function Game({accessToken}) {
 
   useEffect(() => {
     dispatch(NewGame({id, accessToken}))
-  }, [id])
+  }, [id, accessToken, dispatch])
 
   useEffect(() => {
     setCurrentQuestion(questions[num])
