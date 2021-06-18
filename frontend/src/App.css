@@ -54,6 +54,8 @@
 }
 
 .dashboard {
+  max-width: 2400px;
+  margin: 0 auto;
   text-align: center;
 }
 .search_bar {
