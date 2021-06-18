@@ -24,7 +24,7 @@ export default function Dashboard({accessToken}) {
     FetchPlaylists(accessToken)
     .then(res => res.json())
     .then(data => setPlaylists(data.items))
-  }, [accessToken])
+  }, [accessToken, dispatch])
 
   return (
     <div className="dashboard">
@@ -33,9 +33,9 @@ export default function Dashboard({accessToken}) {
           <h1>Welcome, {name}</h1>
           {avatar && <img className="avatar" src={avatar} alt={name} />}
         </div>
-        <form>
+        {/* <form>
           <input className="search_bar" onChange={(e) => setFilter(e.target.value)} value={filter} placeholder="Search for Playlist" />
-        </form>
+        </form> */}
         <button onClick={handleLogout}className="logout-btn">Log Out</button>
       </div>
       <div className="points-counter">Points: {points}</div>
