@@ -1,48 +1,33 @@
 import { useEffect, useState } from 'react';
-import FetchUserInfo from '../services/FetchUserInfo';
 import FetchPlaylists from '../services/FetchPlaylists';
 import Playlist from '../components/Playlist';
 import { useHistory } from 'react-router-dom';
+import { FetchUserInfo } from '../services/FetchUserInfo';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function Dashboard({accessToken}) {
 
-  const [name, setName] = useState();
-  const [avatar, setAvatar] = useState();
   const [playlists, setPlaylists] = useState();
   const [filter, setFilter] = useState('');
   const history = useHistory();
-
-  useEffect(() => {
-    if (!accessToken) return
-    FetchUserInfo(accessToken)
-    .then(res => {
-      if (!res.ok) {
-        localStorage.clear()
-        window.location = '/login'
-        return
-      }
-      return res.json()
-    })
-    .then(data => {
-      localStorage.setItem('jwt', data.jwt)
-      setName(data.user.name)
-      if (data.user.avatar) {
-        setAvatar(data.user.avatar)
-      }
-    }, [accessToken])
-
-    FetchPlaylists(accessToken)
-    .then(res => res.json())
-    .then(data => setPlaylists(data.items))
-  }, [accessToken])
+  const dispatch = useDispatch();
+  const { name, avatar, points } = useSelector(state => state.user)
 
   const handleLogout = () => {
     localStorage.clear();
     history.push('/login');
   }
 
+  useEffect(() => {
+    dispatch(FetchUserInfo({accessToken}))
+
+    FetchPlaylists(accessToken)
+    .then(res => res.json())
+    .then(data => setPlaylists(data.items))
+  }, [accessToken])
+
   return (
-    <div>
+    <div className="dashboard">
       <div className="flex">
         <div className="inline">
           <h1>Welcome, {name}</h1>
@@ -53,6 +38,7 @@ export default function Dashboard({accessToken}) {
         </form>
         <button onClick={handleLogout}className="logout-btn">Log Out</button>
       </div>
+      <div className="points-counter">Points: {points}</div>
       <p className="instructions">Click on a playlist below to start a game!</p>
       
         <div className="playlist_grid">
