@@ -11,7 +11,9 @@ class UsersController < ApplicationController
 
     user = User.find_or_create_by(spotify_id: user_params["id"]) do |u|
       u.name = user_params["display_name"]
-      u.avatar = user_params["images"][0]["url"]
+      if user_params["images"][0] 
+        u.avatar = user_params["images"][0]["url"]
+      end
       u.points = 0
     end
 
