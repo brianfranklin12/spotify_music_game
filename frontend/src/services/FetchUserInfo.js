@@ -11,5 +11,12 @@ export const FetchUserInfo = createAsyncThunk('user/FetchUserInfo', async ({acce
       accessToken
     })
   })
-  .then(res => res.json())
+  .then(res => {
+    if (res.ok) {
+      return res.json()
+    } else {
+      localStorage.clear()
+      window.location = "/login"
+    }
+  })
 })
