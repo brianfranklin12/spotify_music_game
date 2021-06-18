@@ -9,14 +9,14 @@ export const gameSlice = createSlice({
     status: null
   },
   reducers: {
-    addGamePoint: (state,action) => {
-      state.points = state.points + 1
+    leaveGame: (state,action) => {
+      state.status = null
+      state.questions = []
     }
   },
   extraReducers: {
     [NewGame.pending]: (state, action) => {
       state.status = 'loading'
-      state.questions = []
     },
     [NewGame.fulfilled] : (state, action) => {
       state.status = 'succeeded'
@@ -27,6 +27,6 @@ export const gameSlice = createSlice({
   }
 })
 
-export const { addGamePoint } = gameSlice.actions;
+export const { leaveGame } = gameSlice.actions;
 
 export default gameSlice.reducer;
