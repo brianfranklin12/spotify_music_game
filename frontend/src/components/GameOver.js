@@ -7,8 +7,8 @@ export default function GameOver({points}) {
   const {id} = useSelector(state => state.user)
 
   useEffect(() => {
-    SubmitPoints(id, points)
-  }, [points, id])
+    SubmitPoints(1, points)
+  }, [id, points])
 
   return (
     <div className="game-over-container">
