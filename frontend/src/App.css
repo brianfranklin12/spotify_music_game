@@ -1,3 +1,14 @@
+.dashboard {
+  max-width: 2400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.game {
+  max-width: 2400px;
+  margin: 0 auto;
+}
+
 .login-page {
   display: grid;
   place-items: center;
@@ -53,11 +64,6 @@
   color: #1db954;
 }
 
-.dashboard {
-  max-width: 2400px;
-  margin: 0 auto;
-  text-align: center;
-}
 .search_bar {
   margin: 1em;
   padding: 0.25em 0;

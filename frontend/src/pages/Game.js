@@ -51,7 +51,7 @@ function Game({accessToken}) {
     gameContent = <div className="loader">Loading...</div>
   } else if (gameStatus === 'succeeded') {
     gameContent = (
-    <>
+    <div className="game">
     <Link onClick={() => dispatch(leaveGame())} className="back-link" to={"/dashboard"}> <LeftIcon className="icon" fill="#212121" /> </Link>
     <div className="game-container">
       <h1>Name the Artist</h1>
@@ -60,7 +60,7 @@ function Game({accessToken}) {
       {currentQuestion && <Player accessToken={accessToken} uri={currentQuestion.track_uri} />}
       {currentQuestion && <Question key={currentQuestion.id} nextQuestion={nextQuestion} addGamePoint={addGamePoint} addWrong={addWrong} question={currentQuestion} />}
     </div>
-    </>
+    </div>
     )
   }
 
