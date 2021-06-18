@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authorized, only: [:create, :refresh]
+  skip_before_action :authorized, only: [:create]
 
   def create
     header = {
@@ -22,6 +22,10 @@ class UsersController < ApplicationController
       render json: { error: user.errors.full_messages }
     end
 
+  end
+
+  def patch
+    binding.irb
   end
     
 
