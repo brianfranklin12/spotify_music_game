@@ -6,7 +6,7 @@ export const gameSlice = createSlice({
   initialState: {
     uri: null,
     questions: [],
-    points: 0
+    status: null
   },
   reducers: {
     addGamePoint: (state,action) => {
@@ -15,9 +15,11 @@ export const gameSlice = createSlice({
   },
   extraReducers: {
     [NewGame.pending]: (state, action) => {
+      state.status = 'loading'
       state.questions = []
     },
     [NewGame.fulfilled] : (state, action) => {
+      state.status = 'succeeded'
       state.questions = action.payload.questions
       state.uri = action.payload.game.playlist_uri
       state.points = action.payload.game.points
