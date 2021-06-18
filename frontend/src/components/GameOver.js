@@ -14,7 +14,7 @@ export default function GameOver({points}) {
 
   return (
     <div className="game-over-container">
-      <h3>You scored {points} points!</h3>
+      <h3>You scored {points} {points === 1 ? "point!" : "points!"}</h3>
       <h1 className="big-text">Game Over</h1>
       <Link onClick={handleClick} className="back-btn" to={"/dashboard"}>Back to dashboard</Link>
     </div>
