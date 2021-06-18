@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { FetchUserInfo } from '../services/FetchUserInfo';
 import { useDispatch, useSelector } from 'react-redux';
 import Filter from '../components/Filter';
+import Counter from '../components/Counter';
 
 export default function Dashboard({accessToken}) {
 
@@ -37,7 +38,7 @@ export default function Dashboard({accessToken}) {
        
         <button onClick={handleLogout}className="logout-btn">Log Out</button>
       </div>
-      <div className="points-counter">Points: {points}</div>
+      <Counter points={points} />
       <p className="instructions">Click on a playlist below to start a game!</p>
       <Filter filter={filter} setFilter={setFilter} />
         <div className="playlist_grid">
