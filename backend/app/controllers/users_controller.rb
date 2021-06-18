@@ -24,8 +24,17 @@ class UsersController < ApplicationController
 
   end
 
-  def patch
-    binding.irb
+  def update
+    user = current_user
+    user.points += params[:points]
+    user.save
+    
+    if user
+      render json: user
+    else
+      render json: {error: current_user.errors.full_messages }
+    end
+
   end
     
 
