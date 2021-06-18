@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom"
 import { SubmitPoints } from '../services/SubmitPoints';
 import { leaveGame } from "../redux/gameSlice"
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function GameOver({points}) {
   const dispatch = useDispatch();
-  const id = 1;
+  const { id } = useSelector(state => state.user);
 
   const handleClick = () => {
     dispatch(SubmitPoints({id, points}))
