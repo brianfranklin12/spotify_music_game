@@ -9,12 +9,11 @@ import Question from '../components/Question';
 import GameOver from '../components/GameOver';
 import { leaveGame } from '../redux/gameSlice';
 
-
 function Game({accessToken}) {
   const { id } = useParams();
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [num, setNum] = useState(0);
-  const [points, setPoints] = useState(0);
+  const [gamePoints, setGamePoints] = useState(0);
   const [wrong, setWrong] = useState(0);
   const dispatch = useDispatch();
   const { questions } = useSelector(state => state.game)
@@ -38,8 +37,8 @@ function Game({accessToken}) {
     setNum(num + 1)
   }
 
-  const addPoint = () => {
-    setPoints(points + 1)
+  const addGamePoint = () => {
+    setGamePoints(gamePoints + 1)
   }
 
   const addWrong = () => {
@@ -56,21 +55,21 @@ function Game({accessToken}) {
     <Link onClick={() => dispatch(leaveGame())} className="back-link" to={"/dashboard"}> <LeftIcon className="icon" fill="#212121" /> </Link>
     <div className="game-container">
       <h1>Name the Artist</h1>
-      <h3>Current Points: {points}</h3>
+      <h3>Current Points: {gamePoints}</h3>
       <h3>Wrong Guesses: {wrong}</h3>
       {currentQuestion && <Player accessToken={accessToken} uri={currentQuestion.track_uri} />}
-      {currentQuestion && <Question key={currentQuestion.id} nextQuestion={nextQuestion} addPoint={addPoint} addWrong={addWrong} question={currentQuestion} />}
+      {currentQuestion && <Question key={currentQuestion.id} nextQuestion={nextQuestion} addGamePoint={addGamePoint} addWrong={addWrong} question={currentQuestion} />}
     </div>
     </>
     )
   }
 
   if (!currentQuestion && gameStatus === 'succeeded') {
-    gameContent = <GameOver points={points} />
+    gameContent = <GameOver gamePoints={gamePoints} />
   }
 
   if (wrong === 3) {
-    gameContent = <GameOver points={points} />
+    gameContent = <GameOver gamePoints={gamePoints} />
   }
 
   return (

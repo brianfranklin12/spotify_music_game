@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
   def update
     user = current_user
-    user.points += params[:points]
+    user.points += params[:gamePoints]
     user.save
     
     if user
