@@ -67,6 +67,21 @@
   outline: white;
 }
 
+.points-counter {
+  padding: 1em 3em;
+  margin: 0 auto;
+  text-align: center;
+  width: 80%;
+  max-width: 500px;
+  text-transform: uppercase;
+  letter-spacing: .25rem;
+  font-size: 1.5rem;
+  border: 5px solid #333;
+  border-radius: 10px;
+  color: #1DB954;
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.4);
+}
+
 .playlist_grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
