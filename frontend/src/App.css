@@ -212,3 +212,13 @@
   text-transform: uppercase;
   letter-spacing: .25rem;
 }
+
+.loader {
+  display: grid;
+  height: 100vh;
+  place-items: center;
+  font-size: 3rem;
+  color: #1DB954;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+}

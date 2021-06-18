@@ -16,6 +16,7 @@ function Game({accessToken}) {
   const [points, setPoints] = useState(0);
   const dispatch = useDispatch();
   const { questions } = useSelector(state => state.game)
+  const gameStatus = useSelector(state => state.game.status)
 
 
   useEffect(() => {
@@ -39,20 +40,32 @@ function Game({accessToken}) {
     setPoints(points + 1)
   }
 
+  let gameContent;
+
+  if (gameStatus === 'loading') {
+    gameContent = <div className="loader">Loading...</div>
+  } else if (gameStatus === 'succeeded') {
+    gameContent = (
+    <>
+    <Link className="back-link" to={"/dashboard"}> <LeftIcon className="icon" fill="#212121" /> </Link>
+    <div className="game-container">
+      <h1>Name the Artist</h1>
+      <h3>Current Points: {points}</h3>
+      {currentQuestion && <Player accessToken={accessToken} uri={currentQuestion.track_uri} />}
+      {currentQuestion && <Question key={currentQuestion.id} nextQuestion={nextQuestion} addPoint={addPoint} question={currentQuestion} />}
+    </div>
+    </>
+    )
+  }
+
+  if (!currentQuestion && gameStatus === 'succeeded') {
+    gameContent = <GameOver points={points} />
+  }
+
 
   return (
     <div>
-      {currentQuestion ? (
-      <>
-        <Link className="back-link" to={"/dashboard"}> <LeftIcon className="icon" fill="#212121" /> </Link>
-        <div className="game-container">
-          <h1>Name the Artist</h1>
-          <h3>Current Points: {points}</h3>
-          {currentQuestion && <Player accessToken={accessToken} uri={currentQuestion.track_uri} />}
-          {currentQuestion && <Question key={currentQuestion.id} nextQuestion={nextQuestion} addPoint={addPoint} question={currentQuestion} />} 
-        </div>
-      </>
-        ) : <GameOver points={points} /> }
+      {gameContent}
     </div>
   )
 }
