@@ -14,13 +14,17 @@ export default function Question({ question, nextQuestion, addPoint }) {
 
   const selectAnswer = e => {
     if (e.target.innerText === question.correct_artist) {
-      alert("woooooooooo")
-      addPoint();
+      e.target.className = "answer correct"
     } else {
-      alert('nooooo')
+      e.target.className = "answer wrong"
+    }
+    setTimeout(() => {
+    if (e.target.innerText === question.correct_artist) {
+      addPoint();
     }
     nextQuestion()
-  }
+  }, 1000)
+}
   
   
   return (
