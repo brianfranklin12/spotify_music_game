@@ -6,7 +6,12 @@ export const gameSlice = createSlice({
   initialState: {
     uri: null,
     questions: [],
-    points: null
+    points: 0
+  },
+  reducers: {
+    addGamePoint: (state,action) => {
+      state.points = state.points + 1
+    }
   },
   extraReducers: {
     [NewGame.pending]: (state, action) => {
@@ -19,5 +24,7 @@ export const gameSlice = createSlice({
     }
   }
 })
+
+export const { addGamePoint } = gameSlice.actions;
 
 export default gameSlice.reducer;

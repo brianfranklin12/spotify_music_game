@@ -1,4 +1,4 @@
-export default function Question({ question, nextQuestion }) {
+export default function Question({ question, nextQuestion, addPoint }) {
 
   const shuffle = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -15,6 +15,7 @@ export default function Question({ question, nextQuestion }) {
   const selectAnswer = e => {
     if (e.target.innerText === question.correct_artist) {
       alert("woooooooooo")
+      addPoint();
     } else {
       alert('nooooo')
     }

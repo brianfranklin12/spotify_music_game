@@ -181,3 +181,34 @@
 .answer:hover {
   background-color: #1db954;
 }
+
+.game-over-container {
+  display: grid;
+  height: 100vh; 
+  place-items: center;
+}
+
+.back-btn { 
+   white-space: nowrap;
+  text-decoration: none;
+  background-color: #1db954;
+  color: white;
+  letter-spacing: .25rem;
+  text-transform: uppercase;
+  padding: 1em 2.5em;
+  border: none;
+  border-radius: .3em;
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  margin: 1em;
+}
+
+.back-btn:hover {
+  background-color: rgba(29,185,84, .8);
+}
+
+.big-text {
+  font-size: 3rem;
+  text-transform: uppercase;
+  letter-spacing: .25rem;
+}
