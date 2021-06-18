@@ -1,4 +1,4 @@
-export default function Question({ question, nextQuestion, addPoint }) {
+export default function Question({ question, nextQuestion, addPoint, addWrong }) {
 
   const shuffle = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -21,6 +21,8 @@ export default function Question({ question, nextQuestion, addPoint }) {
     setTimeout(() => {
     if (e.target.innerText === question.correct_artist) {
       addPoint();
+    } else {
+      addWrong();
     }
     nextQuestion()
   }, 1000)

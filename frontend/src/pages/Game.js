@@ -15,6 +15,7 @@ function Game({accessToken}) {
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [num, setNum] = useState(0);
   const [points, setPoints] = useState(0);
+  const [wrong, setWrong] = useState(0);
   const dispatch = useDispatch();
   const { questions } = useSelector(state => state.game)
   const gameStatus = useSelector(state => state.game.status)
@@ -41,6 +42,10 @@ function Game({accessToken}) {
     setPoints(points + 1)
   }
 
+  const addWrong = () => {
+    setWrong(wrong + 1)
+  }
+
   let gameContent;
 
   if (gameStatus === 'loading') {
@@ -52,14 +57,19 @@ function Game({accessToken}) {
     <div className="game-container">
       <h1>Name the Artist</h1>
       <h3>Current Points: {points}</h3>
+      <h3>Wrong Guesses: {wrong}</h3>
       {currentQuestion && <Player accessToken={accessToken} uri={currentQuestion.track_uri} />}
-      {currentQuestion && <Question key={currentQuestion.id} nextQuestion={nextQuestion} addPoint={addPoint} question={currentQuestion} />}
+      {currentQuestion && <Question key={currentQuestion.id} nextQuestion={nextQuestion} addPoint={addPoint} addWrong={addWrong} question={currentQuestion} />}
     </div>
     </>
     )
   }
 
   if (!currentQuestion && gameStatus === 'succeeded') {
+    gameContent = <GameOver points={points} />
+  }
+
+  if (wrong === 3) {
     gameContent = <GameOver points={points} />
   }
 
