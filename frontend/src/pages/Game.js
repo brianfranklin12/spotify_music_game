@@ -7,11 +7,12 @@ import { NewGame } from '../services/NewGame';
 import { useDispatch, useSelector } from 'react-redux';
 import Question from '../components/Question';
 import GameOver from '../components/GameOver';
+import { leaveGame } from '../redux/gameSlice';
 
 
 function Game({accessToken}) {
   const { id } = useParams();
-  const [currentQuestion, setCurrentQuestion] = useState();
+  const [currentQuestion, setCurrentQuestion] = useState(null);
   const [num, setNum] = useState(0);
   const [points, setPoints] = useState(0);
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ function Game({accessToken}) {
     if (num <= questions.length) {
       return setCurrentQuestion(questions[num])
     } else {
-      return null;
+      return setCurrentQuestion(null);
     }
     
   }, [questions, num])
@@ -47,7 +48,7 @@ function Game({accessToken}) {
   } else if (gameStatus === 'succeeded') {
     gameContent = (
     <>
-    <Link className="back-link" to={"/dashboard"}> <LeftIcon className="icon" fill="#212121" /> </Link>
+    <Link onClick={() => dispatch(leaveGame())} className="back-link" to={"/dashboard"}> <LeftIcon className="icon" fill="#212121" /> </Link>
     <div className="game-container">
       <h1>Name the Artist</h1>
       <h3>Current Points: {points}</h3>
@@ -61,7 +62,6 @@ function Game({accessToken}) {
   if (!currentQuestion && gameStatus === 'succeeded') {
     gameContent = <GameOver points={points} />
   }
-
 
   return (
     <div>
