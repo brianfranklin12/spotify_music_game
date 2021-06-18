@@ -31,7 +31,7 @@ export default function Dashboard({accessToken}) {
       <div className="flex">
         <div className="inline">
           <h1>Welcome, {name}</h1>
-          <img className="avatar" src={avatar} alt={name} />
+          {avatar && <img className="avatar" src={avatar} alt={name} />}
         </div>
         <form>
           <input className="search_bar" onChange={(e) => setFilter(e.target.value)} value={filter} placeholder="Search for Playlist" />
