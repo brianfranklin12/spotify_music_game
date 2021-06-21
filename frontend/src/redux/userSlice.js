@@ -13,7 +13,6 @@ export const userSlice = createSlice({
   },
   extraReducers: {
     [FetchUserInfo.fulfilled]: (state, action) => {
-      console.log(action.payload)
       state.id = action.payload.user.id
       state.avatar = action.payload.user.avatar
       state.name = action.payload.user.name
