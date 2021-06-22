@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const FetchUserInfo = createAsyncThunk('user/FetchUserInfo', async ({accessToken}) => {
 
-  return fetch('http://localhost:3001/users', {
+  return fetch('https://spotify-music-game-api.herokuapp.com/users', {
     method: "POST",
     headers: {
       "Content-Type": "application/json"

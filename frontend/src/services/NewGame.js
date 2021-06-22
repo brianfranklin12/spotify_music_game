@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const NewGame = createAsyncThunk('game/NewGame', async ({id, accessToken}) => {
-  return fetch('http://localhost:3001/games', {
+  return fetch('https://spotify-music-game-api.herokuapp.com/games', {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
