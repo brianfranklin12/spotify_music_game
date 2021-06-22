@@ -3,7 +3,7 @@ class CreateGames < ActiveRecord::Migration[6.1]
     create_table :games do |t|
       t.belongs_to :user, null: false, foreign_key: true
       t.string :playlist_uri
-      t.string :points
+      t.integer :points
 
       t.timestamps
     end

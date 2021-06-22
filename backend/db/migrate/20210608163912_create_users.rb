@@ -3,7 +3,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
     create_table :users do |t|
       t.integer :spotify_id
       t.string :avatar
-      t.string :points
+      t.integer :points
 
       t.timestamps
     end

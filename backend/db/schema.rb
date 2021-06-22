@@ -12,17 +12,20 @@
 
 ActiveRecord::Schema.define(version: 2021_06_18_164757) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "games", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "playlist_uri"
-    t.string "points"
+    t.integer "points"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_games_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|
-    t.integer "game_id", null: false
+    t.bigint "game_id", null: false
     t.string "track_uri"
     t.string "a1"
     t.string "a2"
@@ -34,7 +37,7 @@ ActiveRecord::Schema.define(version: 2021_06_18_164757) do
   end
 
   create_table "tracks", force: :cascade do |t|
-    t.integer "game_id", null: false
+    t.bigint "game_id", null: false
     t.string "name"
     t.string "artist"
     t.string "uri"
