@@ -223,7 +223,6 @@
   display: grid;
   height: 100vh; 
   place-items: center;
-  margin: 2rem 0;
 }
 
 .back-btn { 
