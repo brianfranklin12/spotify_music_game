@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'https://spotify-music-game.netlify.app/'
+    origins ENV['CORS_ORIGIN']
 
     resource '*',
       headers: :any,
