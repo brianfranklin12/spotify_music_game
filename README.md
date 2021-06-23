@@ -4,7 +4,7 @@
 
 ### Live Demo
 
-[Click here to check it out!](https://spotify-music-game.netlify.app/)
+[Click here to check it out!](https://spotify-music-game.netlify.app/) <br>
 Currently, the Spotify Web Playback SDK is unsupported in mobile and safari, so unfortunately, you won't hear the tracks on those platforms. You can still visually check out the app's functionality, but to hear the tracks playing, you'll need to use Chrome or Firefox or Edge on a computer.
 
 ### Instructions
