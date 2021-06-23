@@ -73,9 +73,9 @@ function Game({accessToken}) {
   }
 
   return (
-    <div>
+    <>
       {gameContent}
-    </div>
+    </>
   )
 }
 

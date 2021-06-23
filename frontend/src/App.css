@@ -12,7 +12,7 @@
 .login-page {
   display: grid;
   place-items: center;
-  height: 100vh;
+  height: 100%;
 }
 
 .login-page a {
@@ -221,12 +221,12 @@
 
 .game-over-container {
   display: grid;
-  height: 100vh; 
+  height: 100%; 
   place-items: center;
 }
 
 .back-btn { 
-   white-space: nowrap;
+  white-space: nowrap;
   text-decoration: none;
   background-color: var(--green);
   color: var(--white);
@@ -252,7 +252,7 @@
 
 .loader {
   display: grid;
-  height: 100vh;
+  height: 100%;
   place-items: center;
   font-size: 3rem;
   color: var(--green);
