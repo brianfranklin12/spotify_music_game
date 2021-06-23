@@ -21,6 +21,7 @@ export default function Dashboard({accessToken}) {
   }
 
   useEffect(() => {
+    if (!accessToken) return;
     dispatch(FetchUserInfo({accessToken}))
 
     FetchPlaylists(accessToken)
