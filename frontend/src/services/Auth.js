@@ -7,7 +7,7 @@ export default function Auth(code) {
 
   useEffect(() => {
     if (!code) return
-    fetch('https://spotify-music-game-api.herokuapp.com/login', {
+    fetch(`${process.env.REACT_APP_API_ENDPOINT}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -31,7 +31,7 @@ export default function Auth(code) {
   useEffect(() => {
     if (!refreshToken || !expiresIn) return 
     const interval = setInterval(() => {
-      fetch('https://spotify-music-game-api.herokuapp.com/refresh', {
+      fetch(`${process.env.REACT_APP_API_ENDPOINT}/refresh`, {
         method: "POST",
         headers: {
           "Content-type": "application/json"
