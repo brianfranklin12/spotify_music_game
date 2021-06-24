@@ -2,7 +2,7 @@ import './App.css';
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import Game from './pages/Game'
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import Auth from './services/Auth';
 
 const code = new URLSearchParams(window.location.search).get('code');
@@ -15,7 +15,6 @@ function App() {
   return (
     accessToken?
     <Router>
-      <Switch>
         <Route path="/playlist/:id">
           <Game accessToken={accessToken} />
         </Route>
@@ -26,7 +25,6 @@ function App() {
         <Route path="/login">
           <Login />
         </Route>
-      </Switch>
     </Router>
     : <Login />
     )
