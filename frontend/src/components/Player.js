@@ -1,6 +1,6 @@
 import SpotifyPlayer from 'react-spotify-web-playback';
 
-function Player({accessToken, uri}) {
+function Player({accessToken, uri, volume}) {
 
   return (
     <div className="hidden">
@@ -9,6 +9,7 @@ function Player({accessToken, uri}) {
         uris={uri}
         autoPlay={true}
         play={true}
+        initialVolume={0.5}
         styles={{
           bgColor: '#212121',
           color: 'white',
